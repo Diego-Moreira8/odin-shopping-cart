@@ -4,6 +4,7 @@ import cartIcon from "../icons/shopping-cart.svg";
 
 const StyledHeader = styled.header`
   background-color: ${(props) => props.theme.main};
+  box-shadow: ${(props) => props.theme.shadow};
 `;
 
 const Wrapper = styled.div`
