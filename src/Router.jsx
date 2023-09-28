@@ -1,5 +1,5 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Header from "./components/Header";
+import App from "./App";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
 import Cart from "./pages/Cart";
@@ -8,7 +8,7 @@ export default function Router() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Header />,
+      element: <App />,
       //errorElement: <ErrorPage />,
       children: [
         {
