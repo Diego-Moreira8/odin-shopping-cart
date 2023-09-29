@@ -3,8 +3,7 @@ import styled from "styled-components";
 const cardElementsWidth = "170px";
 
 const StyledProductCard = styled.div`
-  box-shadow: ${(props) => props.theme.shadow};
-  border-radius: 1rem;
+  ${(props) => props.theme.container};
   padding: 1rem;
   display: flex;
   flex-flow: column;

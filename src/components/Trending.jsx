@@ -2,7 +2,7 @@ import styled from "styled-components";
 import ProductCard from "./ProductCard";
 
 const TrendingWrapper = styled.div`
-  ${(props) => props.theme.productsContainer}
+  ${(props) => props.theme.productsContainer};
 `;
 
 export default function Trending({ products }) {

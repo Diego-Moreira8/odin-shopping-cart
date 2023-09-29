@@ -3,13 +3,11 @@ import Slide from "./Slide";
 import { useEffect, useState } from "react";
 
 const StyledCarousel = styled.div`
+  ${(props) => props.theme.container};
   position: relative;
   max-width: 700px;
   height: 393px;
-  background-color: ${(props) => props.theme.canvas};
-  box-shadow: ${(props) => props.theme.shadow};
   margin: 0 auto;
-  border-radius: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
