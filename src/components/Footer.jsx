@@ -7,6 +7,7 @@ const StyledFooter = styled.footer`
   align-items: center;
   padding: 1rem;
   text-align: center;
+  margin-top: 4rem;
 
   @media (max-width: 400px) {
     flex-flow: column;

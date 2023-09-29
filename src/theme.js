@@ -7,6 +7,7 @@ const theme = {
   danger: "#D00000",
   shadow: "0 0 10px 2px #00000025",
   shortShadow: "0 0 4px 1px #00000025",
+  longShadow: "0 0 10px 6px #00000025",
   shortInsetShadow: "inset 0 0 2px 0px #00000025",
 };
 

@@ -8,7 +8,7 @@ const GlobalStyles = createGlobalStyle`
   h1 {
     font: 3rem Rancho, cursive;
     text-align: center;
-    margin: 2rem;
+    margin: 4rem 1rem 2rem 1rem;
   }
 `;
 
