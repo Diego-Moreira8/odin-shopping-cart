@@ -2,12 +2,7 @@ import styled from "styled-components";
 import ProductCard from "./ProductCard";
 
 const TrendingWrapper = styled.div`
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-  max-width: 1000px;
-  margin: 0 auto;
-  justify-content: center;
+  ${(props) => props.theme.productsContainer}
 `;
 
 export default function Trending({ products }) {
