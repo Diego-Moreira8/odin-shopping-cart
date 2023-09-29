@@ -15,8 +15,9 @@ const StyledSlide = styled(Link)`
 
 const Image = styled.img`
   display: block;
-  width: 191px;
-  height: 213px;
+  width: 400px;
+  height: 200px;
+  object-fit: contain;
 `;
 
 const Wrapper = styled.div`
@@ -41,7 +42,7 @@ export default function Slide({ imgSrc, imgAlt, tittle, price }) {
       <Image src={imgSrc} alt={imgAlt} />
       <Wrapper>
         <Title>{tittle}</Title>
-        <Price>$ {price}</Price>
+        <Price>$ {price.toFixed(2)}</Price>
       </Wrapper>
     </StyledSlide>
   );

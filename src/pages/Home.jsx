@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <StyledSection>
       <h1>Welcome to FakeStore!</h1>
-      <Carousel />
+      <Carousel products={products.slice(0, 3)} />
     </StyledSection>
   );
 }

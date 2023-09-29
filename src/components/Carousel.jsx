@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import Slide from "./Slide";
-
-// Delete when done
-import test from "../images/test.jpg";
+import { useEffect, useState } from "react";
 
 const StyledCarousel = styled.div`
   position: relative;
@@ -35,22 +33,55 @@ const Button = styled.button`
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  //background-color: ${(props) => props.theme.main};
+
+  &.active {
+    background-color: ${(props) => props.theme.main};
+  }
 `;
 
-export default function Carousel() {
+export default function Carousel({ products }) {
+  const slides = products.map((p) => (
+    <Slide
+      key={p.id}
+      imgSrc={p.image}
+      imgAlt={p.title}
+      tittle={p.title}
+      price={p.price}
+    />
+  ));
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const handleChangeSlide = (slide) => setCurrentSlide(slide);
+
+  useEffect(() => {
+    const key = setInterval(() => {
+      setCurrentSlide(
+        currentSlide === slides.length - 1 ? 0 : currentSlide + 1
+      );
+    }, 5000);
+
+    return () => {
+      clearInterval(key);
+    };
+  }, [currentSlide]);
+
   return (
     <StyledCarousel>
-      <Slide
-        imgSrc={test}
-        imgAlt={"Alt"}
-        tittle={"Men s Cotton Jacket"}
-        price={99.99}
-      />
+      {slides[currentSlide]}
       <SlideSelector>
-        <Button />
-        <Button />
-        <Button />
+        <Button
+          className={currentSlide === 0 && "active"}
+          onClick={() => handleChangeSlide(0)}
+        />
+        <Button
+          className={currentSlide === 1 && "active"}
+          onClick={() => handleChangeSlide(1)}
+        />
+        <Button
+          className={currentSlide === 2 && "active"}
+          onClick={() => handleChangeSlide(2)}
+        />
       </SlideSelector>
     </StyledCarousel>
   );
