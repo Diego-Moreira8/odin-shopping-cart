@@ -3,9 +3,7 @@ import Carousel from "../components/Carousel";
 import { useOutletContext } from "react-router-dom";
 import Trending from "../components/Trending";
 
-const StyledHome = styled.div`
-  padding: 0 2rem;
-`;
+const StyledHome = styled.div``;
 
 export default function Home() {
   const [products] = useOutletContext();

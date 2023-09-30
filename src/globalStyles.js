@@ -5,6 +5,10 @@ const GlobalStyles = createGlobalStyle`
     font-family: Roboto, sans-serif;
   }
 
+  section{
+    padding: 0 2rem;
+  }
+
   h1 {
     font: 3rem Rancho, cursive;
     text-align: center;
