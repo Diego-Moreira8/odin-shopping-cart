@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const cardElementsWidth = "170px";
 
-const StyledProductCard = styled.div`
+const StyledProductCard = styled(Link)`
   ${(props) => props.theme.container};
   padding: 1rem;
   display: flex;
@@ -11,6 +12,8 @@ const StyledProductCard = styled.div`
   gap: 1rem;
   width: calc(${cardElementsWidth} + 2rem);
   cursor: pointer;
+  color: ${(props) => props.theme.text};
+  text-decoration: none;
   transition: transform 300ms ease-out, box-shadow 300ms ease-out;
 
   &:hover {
@@ -45,10 +48,10 @@ const Price = styled(TextElements)`
 `;
 
 export default function ProductCard(props) {
-  const { imgSrc, imgAlt, title, price } = props;
+  const { id, imgSrc, imgAlt, title, price } = props;
 
   return (
-    <StyledProductCard>
+    <StyledProductCard to={`/product/${id}`}>
       <Img src={imgSrc} alt={imgAlt} />
       <Title>{title}</Title>
       <Price>$ {price.toFixed(2)}</Price>

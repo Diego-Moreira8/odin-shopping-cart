@@ -40,13 +40,7 @@ const PricingWrapper = styled.div`
 `;
 
 const AmountInput = styled.input`
-  border: none;
-  border-radius: 0.5rem;
-  padding: 0.25rem 0.25rem 0.25rem 1rem;
-  width: 5rem;
-  text-align: center;
-  font-size: 1rem;
-  box-shadow: ${(props) => props.theme.shortInsetShadow};
+  ${(props) => props.theme.amountInput};
 `;
 
 const TotalPrice = styled.div`

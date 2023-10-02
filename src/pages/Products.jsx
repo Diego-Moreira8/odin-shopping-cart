@@ -11,6 +11,7 @@ export default function Products() {
   const productsCards = products.map((p) => (
     <ProductCard
       key={p.id}
+      id={p.id}
       imgSrc={p.image}
       imgAlt={p.title}
       title={p.title}

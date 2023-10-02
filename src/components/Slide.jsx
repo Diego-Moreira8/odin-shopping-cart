@@ -36,9 +36,9 @@ const Price = styled.div`
   font-weight: bold;
 `;
 
-export default function Slide({ imgSrc, imgAlt, tittle, price }) {
+export default function Slide({ id, imgSrc, imgAlt, tittle, price }) {
   return (
-    <StyledSlide>
+    <StyledSlide to={`/product/${id}`}>
       <Image src={imgSrc} alt={imgAlt} />
       <Wrapper>
         <Title>{tittle}</Title>

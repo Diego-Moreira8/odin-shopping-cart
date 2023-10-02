@@ -28,6 +28,15 @@ const elements = {
     max-width: 1000px;
     margin: 0 auto;
   `,
+  amountInput: `
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.25rem 0.25rem 0.25rem 1rem;
+    width: 5rem;
+    text-align: center;
+    font-size: 1rem;
+    box-shadow: ${shadows.shortInsetShadow};
+  `,
 };
 
 const theme = { ...colors, ...shadows, ...elements };

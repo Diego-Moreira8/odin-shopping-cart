@@ -3,6 +3,7 @@ import App from "./App";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
 import Cart from "./pages/Cart";
+import ProductPage from "./pages/ProductPage";
 
 export default function Router() {
   const router = createBrowserRouter([
@@ -22,6 +23,10 @@ export default function Router() {
         {
           path: "/cart",
           element: <Cart />,
+        },
+        {
+          path: "/product/:id",
+          element: <ProductPage />,
         },
       ],
     },

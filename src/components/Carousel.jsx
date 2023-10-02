@@ -28,6 +28,7 @@ const Button = styled.button`
   box-shadow: ${(props) => props.theme.shortInsetShadow};
   width: 1rem;
   height: 1rem;
+  padding: 0;
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -41,6 +42,7 @@ export default function Carousel({ products }) {
   const slides = products.map((p) => (
     <Slide
       key={p.id}
+      id={p.id}
       imgSrc={p.image}
       imgAlt={p.title}
       tittle={p.title}
