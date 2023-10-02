@@ -5,8 +5,18 @@ import CartProduct from "../components/CartProduct";
 const CartContainer = styled.div`
   ${(props) => props.theme.container}
   max-width: 1000px;
-  padding: 1rem;
+  padding: 3rem;
   margin: 0 auto;
+`;
+
+const TotalPrice = styled.div`
+  font-size: 1.5rem;
+  font-weight: bold;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 
 export default function Cart() {
@@ -28,7 +38,15 @@ export default function Cart() {
   return (
     <section>
       <h1>Shopping Cart</h1>
-      <CartContainer>{test}</CartContainer>
+      <CartContainer>
+        {test}
+        <Wrapper>
+          <TotalPrice>Total price: $ 9000.99</TotalPrice>
+          <button className="ok" type="button">
+            Check-out
+          </button>
+        </Wrapper>
+      </CartContainer>
     </section>
   );
 }

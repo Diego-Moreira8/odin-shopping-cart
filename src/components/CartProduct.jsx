@@ -7,7 +7,7 @@ const StyledCartProduct = styled.div`
   justify-content: space-between;
   align-items: center;
   max-width: 900px;
-  margin: 2rem;
+  margin-bottom: 2rem;
   padding-bottom: 2rem;
   border-bottom: 1px solid ${(props) => props.theme.text};
 `;
@@ -54,17 +54,16 @@ const TotalPrice = styled.div`
 `;
 
 const DeleteButton = styled.button`
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
   width: 2.5rem;
   height: 2.5rem;
-  border: none;
-  border-radius: 0.5rem;
   background-color: transparent;
 
   svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     fill: ${(props) => props.theme.text};
   }
 
