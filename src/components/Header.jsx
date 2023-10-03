@@ -68,7 +68,7 @@ export default function Header({ userCart }) {
   const itemsOnCart =
     userCart.length === 0
       ? 0
-      : userCart.reduce((acc, curr) => acc + curr.amount, 0);
+      : userCart.reduce((acc, curr) => acc + curr.quantity, 0);
   return (
     <StyledHeader>
       <Wrapper>

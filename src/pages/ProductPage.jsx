@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useOutletContext, useParams } from "react-router-dom";
+import { useOutletContext, useParams, Link } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledProductPage = styled.div`
@@ -82,13 +82,15 @@ export default function ProductPage() {
             value={currAmount}
             id="amount"
           />
-          <button
-            className="ok"
-            type="button"
-            onClick={() => addToCart(product.id, parseInt(currAmount))}
-          >
-            Add to cart
-          </button>
+          <Link to="/cart">
+            <button
+              className="ok"
+              type="button"
+              onClick={() => addToCart(product.id, parseInt(currAmount))}
+            >
+              Add to cart
+            </button>
+          </Link>
         </Wrapper>
       </div>
     </StyledProductPage>

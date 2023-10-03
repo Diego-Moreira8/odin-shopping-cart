@@ -20,28 +20,37 @@ const Wrapper = styled.div`
 `;
 
 export default function Cart() {
-  const [products] = useOutletContext();
+  const [products, addToCart, userCart] = useOutletContext();
 
-  const test = products
-    .slice(-3)
-    .map((p) => (
+  const cartList = userCart.map((item) => {
+    const productToMap = products.find(
+      (product) => product.id === item.productId
+    );
+
+    return (
       <CartProduct
-        key={p.id}
-        imgSrc={p.image}
-        imgAlt={p.title}
-        title={p.title}
-        amount={1}
-        price={p.price}
+        key={productToMap.id}
+        imgSrc={productToMap.image}
+        imgAlt={productToMap.title}
+        title={productToMap.title}
+        amount={item.quantity}
+        price={productToMap.price}
       />
-    ));
+    );
+  });
+
+  const cartValue = userCart.reduce((acc, curr) => {
+    const product = products.find((p) => p.id === curr.productId);
+    return acc + product.price * curr.quantity;
+  }, 0);
 
   return (
     <section>
       <h1>Shopping Cart</h1>
       <CartContainer>
-        {test}
+        {cartList}
         <Wrapper>
-          <TotalPrice>Total price: $ 9000.99</TotalPrice>
+          <TotalPrice>Total price: $ {cartValue.toFixed(2)}</TotalPrice>
           <button className="ok" type="button">
             Check-out
           </button>
