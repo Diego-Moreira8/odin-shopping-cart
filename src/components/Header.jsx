@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Logo from "./Logo";
 
 const StyledHeader = styled.header`
   background-color: ${(props) => props.theme.main};
@@ -24,14 +25,6 @@ const StyledLink = styled(Link)`
 
   &:hover {
     background-color: #ffffff1c;
-  }
-`;
-
-const Brand = styled(StyledLink)`
-  font: 3rem Rancho, cursive;
-
-  &:hover {
-    background-color: transparent;
   }
 `;
 
@@ -73,7 +66,7 @@ export default function Header({ userCart }) {
   return (
     <StyledHeader>
       <Wrapper>
-        <Brand to="/">FakeStore</Brand>
+        <Logo />
         <nav>
           <NavLinks>
             <li>

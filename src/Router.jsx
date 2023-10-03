@@ -1,4 +1,5 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import ErrorPage from "./pages/ErrorPage";
 import App from "./App";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
@@ -10,7 +11,7 @@ export default function Router() {
     {
       path: "/",
       element: <App />,
-      //errorElement: <ErrorPage />,
+      errorElement: <ErrorPage />,
       children: [
         {
           path: "/",
