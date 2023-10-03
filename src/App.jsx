@@ -20,7 +20,18 @@ export default function App() {
   const [userCart, setUserCart] = useState([]);
 
   const addToCart = (productId, amount) => {
-    setUserCart((prev) => [...prev, { productId, amount }]);
+    const alreadyOnCart = userCart.find((item) => item.productId === productId);
+
+    if (alreadyOnCart) {
+      const updatedUserCart = userCart.map((item) =>
+        item.productId === productId
+          ? { ...item, amount: item.amount + amount }
+          : item
+      );
+      setUserCart(updatedUserCart);
+    } else {
+      setUserCart((prev) => [...prev, { productId, amount }]);
+    }
   };
 
   useEffect(() => console.table(userCart), [userCart]);
