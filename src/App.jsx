@@ -17,6 +17,13 @@ export default function App() {
   const [products, setProducts] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [userCart, setUserCart] = useState([]);
+
+  const addToCart = (productId, amount) => {
+    setUserCart((prev) => [...prev, { productId, amount }]);
+  };
+
+  useEffect(() => console.table(userCart), [userCart]);
 
   useEffect(() => {
     async function getData() {
@@ -47,10 +54,10 @@ export default function App() {
   return (
     <StyledBody>
       <Content>
-        <Header />
+        <Header userCart={userCart} />
         {loading && <h1>Loading...</h1>}
         {error && <h1>{error}</h1>}
-        {products && <Outlet context={[products]} />}
+        {products && <Outlet context={[products, addToCart]} />}
       </Content>
       <Footer />
     </StyledBody>

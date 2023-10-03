@@ -51,7 +51,7 @@ const Wrapper = styled.div`
 
 export default function ProductPage() {
   const { id } = useParams();
-  const [products] = useOutletContext();
+  const [products, addToCart] = useOutletContext();
   const product = products[products.findIndex((p) => p.id === parseInt(id))];
   const [currAmount, setCurrAmount] = useState(1);
 
@@ -82,7 +82,11 @@ export default function ProductPage() {
             value={currAmount}
             id="amount"
           />
-          <button className="ok" type="button">
+          <button
+            className="ok"
+            type="button"
+            onClick={() => addToCart(product.id, parseInt(currAmount))}
+          >
             Add to cart
           </button>
         </Wrapper>

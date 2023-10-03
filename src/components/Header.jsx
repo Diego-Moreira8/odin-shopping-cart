@@ -64,7 +64,11 @@ const CartCounter = styled.div`
   font-size: 0.65rem;
 `;
 
-export default function Header() {
+export default function Header({ userCart }) {
+  const itemsOnCart =
+    userCart.length === 0
+      ? 0
+      : userCart.reduce((acc, curr) => acc + curr.amount, 0);
   return (
     <StyledHeader>
       <Wrapper>
@@ -80,7 +84,7 @@ export default function Header() {
             <li>
               <CartLink to="/cart" title="Shopping Cart">
                 <CartIcon src={cartIcon} alt="Shopping-cart Icon" />
-                <CartCounter>99+</CartCounter>
+                <CartCounter>{itemsOnCart}</CartCounter>
               </CartLink>
             </li>
           </NavLinks>
