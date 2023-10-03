@@ -70,11 +70,11 @@ const DeleteButton = styled.button`
   }
 `;
 
-export default function CartProduct({ imgSrc, imgAlt, title, amount, price }) {
-  const [currAmount, setCurrAmount] = useState(amount);
+export default function CartProduct(props) {
+  const { id, imgSrc, imgAlt, title, quantity, price, changeQuantity } = props;
 
   const handleChange = (e) => {
-    setCurrAmount(e.target.value);
+    changeQuantity(id, parseInt(e.target.value));
   };
 
   return (
@@ -90,10 +90,10 @@ export default function CartProduct({ imgSrc, imgAlt, title, amount, price }) {
             <AmountInput
               type="number"
               onChange={handleChange}
-              value={currAmount}
+              value={quantity}
               min={1}
             />
-            <TotalPrice>$ {(price * currAmount).toFixed(2)}</TotalPrice>
+            <TotalPrice>$ {(price * quantity).toFixed(2)}</TotalPrice>
           </PricingWrapper>
         </ProductTextsWrapper>
       </ProductWrapper>

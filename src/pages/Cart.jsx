@@ -20,7 +20,7 @@ const Wrapper = styled.div`
 `;
 
 export default function Cart() {
-  const [products, addToCart, userCart] = useOutletContext();
+  const [products, addToCart, userCart, changeQuantity] = useOutletContext();
 
   const cartList = userCart.map((item) => {
     const productToMap = products.find(
@@ -30,11 +30,13 @@ export default function Cart() {
     return (
       <CartProduct
         key={productToMap.id}
+        id={productToMap.id}
         imgSrc={productToMap.image}
         imgAlt={productToMap.title}
         title={productToMap.title}
-        amount={item.quantity}
+        quantity={item.quantity}
         price={productToMap.price}
+        changeQuantity={changeQuantity}
       />
     );
   });

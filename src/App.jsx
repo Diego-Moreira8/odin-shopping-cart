@@ -37,6 +37,13 @@ export default function App() {
     }
   };
 
+  const changeQuantity = (productId, quantity) => {
+    const updatedUserCart = userCart.map((item) =>
+      item.productId === productId ? { ...item, quantity: quantity } : item
+    );
+    setUserCart(updatedUserCart);
+  };
+
   useEffect(() => console.table(userCart), [userCart]);
 
   useEffect(() => {
@@ -71,7 +78,9 @@ export default function App() {
         <Header userCart={userCart} />
         {loading && <h1>Loading...</h1>}
         {error && <h1>{error}</h1>}
-        {products && <Outlet context={[products, addToCart, userCart]} />}
+        {products && (
+          <Outlet context={[products, addToCart, userCart, changeQuantity]} />
+        )}
       </Content>
       <Footer />
     </StyledBody>
