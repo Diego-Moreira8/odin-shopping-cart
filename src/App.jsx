@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import useFakeStore from "./hooks/useFakeStore";
 import useShoppingCart from "./hooks/useShoppingCart";
+import ErrorMessage from "./components/ErrorMessage";
 
 const StyledBody = styled.div`
   min-height: 100vh;
@@ -21,7 +22,7 @@ export default function App() {
       <div>
         <Header userCart={userCart} />
         {loading && <h1>Loading...</h1>}
-        {error && <h1>{error}</h1>}
+        {error && <ErrorMessage error={error} />}
         {products && (
           <Outlet
             context={[
