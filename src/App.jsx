@@ -11,16 +11,41 @@ const StyledBody = styled.div`
   justify-content: space-between;
 `;
 
-const Content = styled.div``;
-
 export default function App() {
   const [products, setProducts] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [userCart, setUserCart] = useState([
-    // { productId: 1, quantity: 1 },
-    // { productId: 2, quantity: 2 },
-  ]);
+
+  const savedCart = JSON.parse(localStorage.getItem("userCart"));
+  const [userCart, setUserCart] = useState(savedCart ? savedCart : []);
+
+  useEffect(() => {
+    async function getData() {
+      try {
+        setLoading(true);
+        setProducts(null);
+        setError(null);
+
+        const response = await fetch("https://fakestoreapi.com/products");
+        if (!response.ok) throw new Error(`Error on fetch: ${response.status}`);
+        let data = await response.json();
+
+        setProducts(data);
+        setLoading(false);
+      } catch (error) {
+        setError(error.message);
+        setProducts(null);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    getData();
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("userCart", JSON.stringify(userCart));
+  }, [userCart]);
 
   const addToCart = (productId, quantity) => {
     const alreadyOnCart = userCart.find((item) => item.productId === productId);
@@ -48,37 +73,9 @@ export default function App() {
     setUserCart(userCart.filter((item) => item.productId !== productId));
   };
 
-  useEffect(() => console.table(userCart), [userCart]);
-
-  useEffect(() => {
-    async function getData() {
-      try {
-        setLoading(true);
-        setProducts(null);
-        setError(null);
-
-        const response = await fetch("https://fakestoreapi.com/products");
-        if (!response.ok) throw new Error(`Error on fetch: ${response.status}`);
-        let data = await response.json();
-
-        setProducts(data);
-        setLoading(false);
-
-        //console.table(data);
-      } catch (error) {
-        setError(error.message);
-        setProducts(null);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    getData();
-  }, []);
-
   return (
     <StyledBody>
-      <Content>
+      <div>
         <Header userCart={userCart} />
         {loading && <h1>Loading...</h1>}
         {error && <h1>{error}</h1>}
@@ -93,7 +90,7 @@ export default function App() {
             ]}
           />
         )}
-      </Content>
+      </div>
       <Footer />
     </StyledBody>
   );
