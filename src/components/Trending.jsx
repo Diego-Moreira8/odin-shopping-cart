@@ -6,18 +6,16 @@ const TrendingWrapper = styled.div`
 `;
 
 export default function Trending({ products }) {
-  const trendingProducts = products
-    .slice(-8)
-    .map((p) => (
-      <ProductCard
-        key={p.id}
-        id={p.id}
-        imgSrc={p.image}
-        imgAlt={p.title}
-        title={p.title}
-        price={p.price}
-      />
-    ));
+  const trendingProducts = products.map((p) => (
+    <ProductCard
+      key={p.id}
+      id={p.id}
+      imgSrc={p.image}
+      imgAlt={p.title}
+      title={p.title}
+      price={p.price}
+    />
+  ));
 
   return (
     <section>

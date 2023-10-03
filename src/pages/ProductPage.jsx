@@ -52,12 +52,11 @@ const Wrapper = styled.div`
 export default function ProductPage() {
   const { id } = useParams();
   const [products, addToCart] = useOutletContext();
-  const product = products[products.findIndex((p) => p.id === parseInt(id))];
-  const [currAmount, setCurrAmount] = useState(1);
+  const [currQuantity, setCurrQuantity] = useState(1);
 
-  const handleChange = (e) => {
-    setCurrAmount(e.target.value);
-  };
+  const product = products[products.findIndex((p) => p.id === parseInt(id))];
+
+  const handleChange = (e) => setCurrQuantity(e.target.value);
 
   return (
     <StyledProductPage>
@@ -70,7 +69,7 @@ export default function ProductPage() {
         <PriceRow>
           <Price>$ {product.price.toFixed(2)}</Price>
           <span>
-            ×{currAmount} = $ {(product.price * currAmount).toFixed(2)}
+            ×{currQuantity} = $ {(product.price * currQuantity).toFixed(2)}
           </span>
         </PriceRow>
 
@@ -79,14 +78,14 @@ export default function ProductPage() {
           <AmountInput
             onChange={handleChange}
             type="number"
-            value={currAmount}
+            value={currQuantity}
             id="amount"
           />
           <Link to="/cart">
             <button
               className="ok"
               type="button"
-              onClick={() => addToCart(product.id, parseInt(currAmount))}
+              onClick={() => addToCart(product.id, parseInt(currQuantity))}
             >
               Add to cart
             </button>

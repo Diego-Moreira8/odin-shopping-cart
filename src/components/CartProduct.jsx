@@ -1,6 +1,4 @@
-import { useState } from "react";
 import styled from "styled-components";
-import deleteIcon from "../icons/delete.svg";
 
 const StyledCartProduct = styled.div`
   display: flex;
@@ -83,7 +81,11 @@ export default function CartProduct(props) {
   } = props;
 
   const handleChange = (e) => {
-    changeQuantity(id, parseInt(e.target.value));
+    if (e.target.value === "") {
+      changeQuantity(id, 0);
+    } else {
+      changeQuantity(id, parseInt(e.target.value));
+    }
   };
 
   return (

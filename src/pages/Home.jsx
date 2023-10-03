@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Carousel from "../components/Carousel";
 import { useOutletContext } from "react-router-dom";
+import Carousel from "../components/Carousel";
 import Trending from "../components/Trending";
 
 const StyledHome = styled.div``;
@@ -14,7 +14,7 @@ export default function Home() {
         <h1>Welcome to FakeStore!</h1>
         <Carousel products={products.slice(0, 3)} />
       </section>
-      <Trending products={products.slice(0, 9)} />
+      <Trending products={products.slice(-8)} />
     </StyledHome>
   );
 }

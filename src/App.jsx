@@ -1,8 +1,9 @@
 import { Outlet } from "react-router-dom";
+import styled from "styled-components";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import styled from "styled-components";
-import { useEffect, useState } from "react";
+import useFakeStore from "./hooks/useFakeStore";
+import useShoppingCart from "./hooks/useShoppingCart";
 
 const StyledBody = styled.div`
   min-height: 100vh;
@@ -12,66 +13,8 @@ const StyledBody = styled.div`
 `;
 
 export default function App() {
-  const [products, setProducts] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  const savedCart = JSON.parse(localStorage.getItem("userCart"));
-  const [userCart, setUserCart] = useState(savedCart ? savedCart : []);
-
-  useEffect(() => {
-    async function getData() {
-      try {
-        setLoading(true);
-        setProducts(null);
-        setError(null);
-
-        const response = await fetch("https://fakestoreapi.com/products");
-        if (!response.ok) throw new Error(`Error on fetch: ${response.status}`);
-        let data = await response.json();
-
-        setProducts(data);
-        setLoading(false);
-      } catch (error) {
-        setError(error.message);
-        setProducts(null);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    getData();
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("userCart", JSON.stringify(userCart));
-  }, [userCart]);
-
-  const addToCart = (productId, quantity) => {
-    const alreadyOnCart = userCart.find((item) => item.productId === productId);
-
-    if (alreadyOnCart) {
-      const updatedUserCart = userCart.map((item) =>
-        item.productId === productId
-          ? { ...item, quantity: item.quantity + quantity }
-          : item
-      );
-      setUserCart(updatedUserCart);
-    } else {
-      setUserCart((prev) => [...prev, { productId, quantity }]);
-    }
-  };
-
-  const changeQuantity = (productId, quantity) => {
-    const updatedUserCart = userCart.map((item) =>
-      item.productId === productId ? { ...item, quantity: quantity } : item
-    );
-    setUserCart(updatedUserCart);
-  };
-
-  const deleteItem = (productId) => {
-    setUserCart(userCart.filter((item) => item.productId !== productId));
-  };
+  const { products, loading, error } = useFakeStore();
+  const { userCart, addToCart, changeQuantity, deleteItem } = useShoppingCart();
 
   return (
     <StyledBody>

@@ -8,7 +8,8 @@ const ProductsWrapper = styled.div`
 
 export default function Products() {
   const [products] = useOutletContext();
-  const productsCards = products.map((p) => (
+
+  const allProducts = products.map((p) => (
     <ProductCard
       key={p.id}
       id={p.id}
@@ -22,7 +23,7 @@ export default function Products() {
   return (
     <section>
       <h1>Products</h1>
-      <ProductsWrapper>{productsCards}</ProductsWrapper>
+      <ProductsWrapper>{allProducts}</ProductsWrapper>
     </section>
   );
 }

@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import Router from "./Router";
-import "./css/reset.css";
-import GlobalStyles from "./globalStyles.js";
+import "./styles/reset.css";
 import { ThemeProvider } from "styled-components";
-import theme from "./theme.js";
+import theme from "./styles/theme.js";
+import GlobalStyles from "./styles/globalStyles.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
