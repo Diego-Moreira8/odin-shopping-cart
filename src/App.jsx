@@ -18,8 +18,8 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [userCart, setUserCart] = useState([
-    { productId: 1, quantity: 1 },
-    { productId: 2, quantity: 2 },
+    // { productId: 1, quantity: 1 },
+    // { productId: 2, quantity: 2 },
   ]);
 
   const addToCart = (productId, quantity) => {
@@ -42,6 +42,10 @@ export default function App() {
       item.productId === productId ? { ...item, quantity: quantity } : item
     );
     setUserCart(updatedUserCart);
+  };
+
+  const deleteItem = (productId) => {
+    setUserCart(userCart.filter((item) => item.productId !== productId));
   };
 
   useEffect(() => console.table(userCart), [userCart]);
@@ -79,7 +83,15 @@ export default function App() {
         {loading && <h1>Loading...</h1>}
         {error && <h1>{error}</h1>}
         {products && (
-          <Outlet context={[products, addToCart, userCart, changeQuantity]} />
+          <Outlet
+            context={[
+              products,
+              addToCart,
+              userCart,
+              changeQuantity,
+              deleteItem,
+            ]}
+          />
         )}
       </Content>
       <Footer />

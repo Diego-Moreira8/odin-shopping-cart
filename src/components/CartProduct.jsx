@@ -71,7 +71,16 @@ const DeleteButton = styled.button`
 `;
 
 export default function CartProduct(props) {
-  const { id, imgSrc, imgAlt, title, quantity, price, changeQuantity } = props;
+  const {
+    id,
+    imgSrc,
+    imgAlt,
+    title,
+    quantity,
+    price,
+    changeQuantity,
+    deleteItem,
+  } = props;
 
   const handleChange = (e) => {
     changeQuantity(id, parseInt(e.target.value));
@@ -98,7 +107,7 @@ export default function CartProduct(props) {
         </ProductTextsWrapper>
       </ProductWrapper>
 
-      <DeleteButton>
+      <DeleteButton onClick={() => deleteItem(id)}>
         <svg
           width="20"
           height="20"

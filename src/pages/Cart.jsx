@@ -1,4 +1,4 @@
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, Link } from "react-router-dom";
 import styled from "styled-components";
 import CartProduct from "../components/CartProduct";
 
@@ -20,7 +20,8 @@ const Wrapper = styled.div`
 `;
 
 export default function Cart() {
-  const [products, addToCart, userCart, changeQuantity] = useOutletContext();
+  const [products, addToCart, userCart, changeQuantity, deleteItem] =
+    useOutletContext();
 
   const cartList = userCart.map((item) => {
     const productToMap = products.find(
@@ -37,6 +38,7 @@ export default function Cart() {
         quantity={item.quantity}
         price={productToMap.price}
         changeQuantity={changeQuantity}
+        deleteItem={deleteItem}
       />
     );
   });
@@ -50,13 +52,21 @@ export default function Cart() {
     <section>
       <h1>Shopping Cart</h1>
       <CartContainer>
-        {cartList}
-        <Wrapper>
-          <TotalPrice>Total price: $ {cartValue.toFixed(2)}</TotalPrice>
-          <button className="ok" type="button">
-            Check-out
-          </button>
-        </Wrapper>
+        {userCart.length === 0 && (
+          <p>
+            Looks empty in here...{" "}
+            <Link to="/products">Add some products!</Link>
+          </p>
+        )}
+        {userCart.length > 0 && cartList}
+        {userCart.length > 0 && (
+          <Wrapper>
+            <TotalPrice>Total price: $ {cartValue.toFixed(2)}</TotalPrice>
+            <button className="ok" type="button">
+              Check-out
+            </button>
+          </Wrapper>
+        )}
       </CartContainer>
     </section>
   );
