@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledCartProduct = styled.div`
@@ -8,33 +9,67 @@ const StyledCartProduct = styled.div`
   margin-bottom: 2rem;
   padding-bottom: 2rem;
   border-bottom: 1px solid ${(props) => props.theme.text};
+
+  @media (max-width: 650px) {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
 `;
 
 const ProductWrapper = styled.div`
   display: flex;
   gap: 2rem;
+  align-items: center;
 `;
 
 const ProductTextsWrapper = styled.div`
   display: flex;
   flex-flow: column;
   justify-content: space-evenly;
+  gap: 1rem;
+
+  @media (max-width: 650px) {
+    gap: 0.5rem;
+  }
 `;
 
 const Image = styled.img`
   width: 100px;
   height: 100px;
   object-fit: contain;
+
+  @media (max-width: 650px) {
+    width: 50px;
+    height: 50px;
+  }
 `;
 
-const Title = styled.div`
+const Title = styled(Link)`
   font-weight: bold;
+  text-decoration: none;
+  color: ${(props) => props.theme.text};
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const PricingWrapper = styled.div`
   display: flex;
   gap: 1rem;
   align-items: center;
+
+  @media (max-width: 650px) {
+    flex-flow: column;
+    gap: 0.5rem;
+    align-items: start;
+  }
+`;
+
+const QuantityWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 `;
 
 const AmountInput = styled.input`
@@ -91,19 +126,23 @@ export default function CartProduct(props) {
   return (
     <StyledCartProduct>
       <ProductWrapper>
-        <Image src={imgSrc} alt={imgAlt} />
+        <Link to={`/product/${id}`}>
+          <Image src={imgSrc} alt={imgAlt} />
+        </Link>
 
         <ProductTextsWrapper>
-          <Title>{title}</Title>
+          <Title to={`/product/${id}`}>{title}</Title>
 
           <PricingWrapper>
-            <div>Quantity:</div>
-            <AmountInput
-              type="number"
-              onChange={handleChange}
-              value={quantity}
-              min={1}
-            />
+            <QuantityWrapper>
+              <div>Quantity:</div>
+              <AmountInput
+                type="number"
+                onChange={handleChange}
+                value={quantity}
+                min={1}
+              />
+            </QuantityWrapper>
             <TotalPrice>$ {(price * quantity).toFixed(2)}</TotalPrice>
           </PricingWrapper>
         </ProductTextsWrapper>

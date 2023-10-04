@@ -11,6 +11,11 @@ const StyledSlide = styled(Link)`
   gap: 2rem;
   color: ${(props) => props.theme.text};
   text-decoration: none;
+
+  @media (max-width: 550px) {
+    flex-flow: column;
+    text-align: center;
+  }
 `;
 
 const Image = styled.img`
@@ -18,22 +23,39 @@ const Image = styled.img`
   width: 400px;
   height: 200px;
   object-fit: contain;
+
+  @media (max-width: 550px) {
+    width: 300px;
+    height: 150px;
+  }
 `;
 
 const Wrapper = styled.div`
   display: flex;
   flex-flow: column;
   gap: 2rem;
+
+  @media (max-width: 550px) {
+    gap: 1rem;
+  }
 `;
 
 const Title = styled.div`
   font-size: 2rem;
   font-weight: bold;
+
+  @media (max-width: 550px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const Price = styled.div`
   font-size: 4rem;
   font-weight: bold;
+
+  @media (max-width: 550px) {
+    font-size: 2rem;
+  }
 `;
 
 export default function Slide({ id, imgSrc, imgAlt, tittle, price }) {

@@ -27,6 +27,10 @@ const elements = {
     gap: 2rem;
     max-width: 1000px;
     margin: 0 auto;
+    
+    @media (max-width: 550px) {
+      gap: 1rem;
+    }
   `,
   amountInput: `
     border: none;

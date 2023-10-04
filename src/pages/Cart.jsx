@@ -7,16 +7,29 @@ const CartContainer = styled.div`
   max-width: 1000px;
   padding: 3rem;
   margin: 0 auto;
+
+  @media (max-width: 650px) {
+    padding: 1.5rem;
+  }
 `;
 
 const TotalPrice = styled.div`
   font-size: 1.5rem;
   font-weight: bold;
+  display: flex;
+  gap: 1rem;
+
+  @media (max-width: 650px) {
+    font-size: 1.25rem;
+    flex-flow: column;
+    gap: 0.5rem;
+  }
 `;
 
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export default function Cart() {
@@ -61,7 +74,10 @@ export default function Cart() {
         {userCart.length > 0 && cartList}
         {userCart.length > 0 && (
           <Wrapper>
-            <TotalPrice>Total price: $ {cartValue.toFixed(2)}</TotalPrice>
+            <TotalPrice>
+              <div>Total price:</div>
+              <div>$ {cartValue.toFixed(2)}</div>
+            </TotalPrice>
             <button className="ok" type="button">
               Check-out
             </button>

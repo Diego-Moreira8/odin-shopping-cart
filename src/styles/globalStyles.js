@@ -8,12 +8,21 @@ const GlobalStyles = createGlobalStyle`
 
   section{
     padding: 0 2rem;
+    
+    @media (max-width: 550px) {
+      padding: 0 1rem;
+    }
   }
 
   h1 {
     font: 3rem Rancho, cursive;
     text-align: center;
     margin: 4rem 1rem 2rem 1rem;
+    
+    @media (max-width: 650px) {
+      margin: 2rem 1rem 1rem 1rem;
+    
+  }
   }
 
   button {

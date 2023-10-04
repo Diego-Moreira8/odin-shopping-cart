@@ -8,12 +8,22 @@ const StyledProductPage = styled.div`
   gap: 4rem;
   max-width: 1000px;
   margin: 3rem auto;
+  padding: 0 2rem;
+
+  @media (max-width: 800px) {
+    flex-flow: column;
+  }
 `;
 
 const Image = styled.img`
   width: 400px;
   height: 400px;
   object-fit: contain;
+
+  @media (max-width: 800px) {
+    width: 300px;
+    height: 300px;
+  }
 `;
 
 const Title = styled.h1`
