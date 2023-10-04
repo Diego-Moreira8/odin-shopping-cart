@@ -72,8 +72,8 @@ const QuantityWrapper = styled.div`
   gap: 0.5rem;
 `;
 
-const AmountInput = styled.input`
-  ${(props) => props.theme.amountInput};
+const QuantityInput = styled.input`
+  ${(props) => props.theme.quantityInput};
 `;
 
 const TotalPrice = styled.div`
@@ -135,9 +135,10 @@ export default function CartProduct(props) {
 
           <PricingWrapper>
             <QuantityWrapper>
-              <div>Quantity:</div>
-              <AmountInput
+              <label htmlFor={`quantity-id-${id}`}>Quantity:</label>
+              <QuantityInput
                 type="number"
+                id={`quantity-id-${id}`}
                 onChange={handleChange}
                 value={quantity}
                 min={1}
@@ -148,7 +149,7 @@ export default function CartProduct(props) {
         </ProductTextsWrapper>
       </ProductWrapper>
 
-      <DeleteButton onClick={() => deleteItem(id)}>
+      <DeleteButton aria-label="Remove item" onClick={() => deleteItem(id)}>
         <svg
           width="20"
           height="20"

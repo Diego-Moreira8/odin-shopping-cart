@@ -2,7 +2,7 @@ const colors = {
   main: "#EE964B",
   canvas: "#FFF",
   text: "#1D1D1D",
-  ok: "#04B600",
+  ok: "#067a03",
   warning: "#FFF597",
   danger: "#D00000",
 };
@@ -32,7 +32,7 @@ const elements = {
       gap: 1rem;
     }
   `,
-  amountInput: `
+  quantityInput: `
     border: none;
     border-radius: 0.5rem;
     padding: 0.25rem 0.25rem 0.25rem 1rem;

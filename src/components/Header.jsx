@@ -96,8 +96,13 @@ export default function Header({ userCart }) {
               <StyledLink to="/products">Products</StyledLink>
             </li>
             <li>
-              <CartLink to="/cart" title="Shopping Cart">
+              <CartLink
+                to="/cart"
+                title="Shopping Cart"
+                aria-label="Shopping Cart"
+              >
                 <CartIcon
+                  aria-hidden="true"
                   width="28"
                   height="28"
                   viewBox="0 0 28 28"

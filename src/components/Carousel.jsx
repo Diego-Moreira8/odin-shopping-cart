@@ -70,18 +70,27 @@ export default function Carousel({ products }) {
     <StyledCarousel>
       {slides[currentSlide]}
       <SlideSelector>
-        <Button
-          className={currentSlide === 0 && "active"}
-          onClick={() => handleChangeSlide(0)}
-        />
-        <Button
-          className={currentSlide === 1 && "active"}
-          onClick={() => handleChangeSlide(1)}
-        />
-        <Button
-          className={currentSlide === 2 && "active"}
-          onClick={() => handleChangeSlide(2)}
-        />
+        <li>
+          <Button
+            aria-label="Jump to slide 1"
+            className={currentSlide === 0 && "active"}
+            onClick={() => handleChangeSlide(0)}
+          />
+        </li>
+        <li>
+          <Button
+            aria-label="Jump to slide 2"
+            className={currentSlide === 1 && "active"}
+            onClick={() => handleChangeSlide(1)}
+          />
+        </li>
+        <li>
+          <Button
+            aria-label="Jump to slide 3"
+            className={currentSlide === 2 && "active"}
+            onClick={() => handleChangeSlide(2)}
+          />
+        </li>
       </SlideSelector>
     </StyledCarousel>
   );

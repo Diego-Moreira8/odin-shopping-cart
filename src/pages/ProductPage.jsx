@@ -49,8 +49,8 @@ const Price = styled.span`
   font-size: 2rem;
 `;
 
-const AmountInput = styled.input`
-  ${(props) => props.theme.amountInput};
+const QuantityInput = styled.input`
+  ${(props) => props.theme.quantityInput};
 `;
 
 const Wrapper = styled.div`
@@ -84,19 +84,18 @@ export default function ProductPage() {
         </PriceRow>
 
         <Wrapper>
-          <label htmlFor="amount">Amount:</label>
-          <AmountInput
+          <label htmlFor="quantity">Quantity:</label>
+          <QuantityInput
             onChange={handleChange}
             type="number"
             value={currQuantity}
-            id="amount"
+            id="quantity"
           />
-          <Link to="/cart">
-            <button
-              className="ok"
-              type="button"
-              onClick={() => addToCart(product.id, parseInt(currQuantity))}
-            >
+          <Link
+            to="/cart"
+            onClick={() => addToCart(product.id, parseInt(currQuantity))}
+          >
+            <button className="ok" type="button">
               Add to cart
             </button>
           </Link>
