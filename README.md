@@ -1,6 +1,6 @@
 # FakeStore
 
-Este é um projeto de loja online feito com React. O projeto foi proposto pelo site [The Odin Project](https://www.theodinproject.com) para aprendizado de React Router Dom e requisição de dados.
+Este é um projeto de loja online feito com React. O projeto foi proposto pelo site [The Odin Project](https://www.theodinproject.com) para aprendizado de React Router Dom e requisição de dados. O projeto está hospedado pelo Vercel neste link: [odin-shopping-cart-kappa.vercel.app](https://odin-shopping-cart-kappa.vercel.app).
 
 ![image](./src/images/read-me-screenshot.png)
 
