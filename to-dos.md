@@ -1,4 +1,0 @@
-# To-dos
-
-- Animations
-- Readme
