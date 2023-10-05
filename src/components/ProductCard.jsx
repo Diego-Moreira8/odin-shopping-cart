@@ -1,16 +1,14 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const cardElementsWidth = "170px";
-
 const StyledProductCard = styled(Link)`
   ${(props) => props.theme.container};
   padding: 1rem;
   display: flex;
   flex-flow: column;
   justify-content: space-between;
-  gap: 1rem;
-  width: calc(${cardElementsWidth} + 2rem);
+  align-items: center;
+  gap: 0.5rem;
   cursor: pointer;
   color: ${(props) => props.theme.text};
   text-decoration: none;
@@ -23,13 +21,12 @@ const StyledProductCard = styled(Link)`
 `;
 
 const Img = styled.img`
-  width: ${cardElementsWidth};
+  width: 170px;
   height: 170px;
   object-fit: contain;
 `;
 
 const TextElements = styled.div`
-  width: ${cardElementsWidth};
   height: 1rem;
   text-align: center;
   text-overflow: ellipsis;
